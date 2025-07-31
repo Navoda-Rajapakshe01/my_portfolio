@@ -1,0 +1,11 @@
+import mongoose from "mongoose"
+
+const ProjectSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  description: String,
+  techStack: [String],
+  github: String,
+  live: String,
+})
+
+export default mongoose.models.Project || mongoose.model("Project", ProjectSchema)

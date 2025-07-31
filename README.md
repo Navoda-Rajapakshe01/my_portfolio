@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Navoda Rajapakshe - Portfolio
+
+A professional portfolio website built with Next.js, React, and Framer Motion animations.
+
+## Features
+
+- ✨ Smooth animations with Framer Motion
+- 🎨 Modern gradient design with professional styling
+- 📱 Fully responsive design
+- 🖼️ Profile image section with placeholder
+- 🔗 Social media links
+- 📄 Resume download functionality
+- 📧 Contact form integration ready
 
 ## Getting Started
 
-First, run the development server:
-
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Run the development server:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Adding Your Photo
 
-## Learn More
+To add your profile photo:
 
-To learn more about Next.js, take a look at the following resources:
+1. Place your photo in the `public` folder (e.g., `public/profile-photo.jpg`)
+2. Update the image source in `src/app/page.tsx`:
+   ```jsx
+   <img 
+     src="/profile-photo.jpg" 
+     alt="Navoda Rajapakshe" 
+     className="w-full h-full rounded-full object-cover"
+   />
+   ```
+3. Remove or comment out the placeholder div with the emoji
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Customization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Update social media links in the component
+- Modify the skills array to match your expertise
+- Change the color scheme by updating the gradient classes
+- Add your actual email address in the mailto link
 
-## Deploy on Vercel
+## Technologies Used
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lucide React Icons
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+The easiest way to deploy your portfolio is using the [Vercel Platform](https://vercel.com/new).
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
