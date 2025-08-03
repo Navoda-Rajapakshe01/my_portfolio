@@ -6,6 +6,7 @@ import HeroSection from "../components/HeroSection";
 import AboutSection from "../components/AboutSection";
 import SkillsSection from "../components/SkillsSection";
 import ProjectsSection from "../components/ProjectsSection";
+import AchievementsSection from "../components/AchievementsSection";
 
 export default function HomePage() {
   return (
@@ -38,6 +39,9 @@ export default function HomePage() {
 
       {/* Projects Section */}
       <ProjectsSection />
+
+      {/* Achievements Section */}
+      <AchievementsSection />
     </div>
   );
 }

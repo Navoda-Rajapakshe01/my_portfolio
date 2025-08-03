@@ -526,6 +526,13 @@ const AboutSection = () => {
                                 <span className="text-slate-200 text-sm">CGPA: 3.77</span>
                               </div>
                             </div>
+                            <div className="bg-slate-800/50 rounded px-4 py-3">
+                              <div className="text-white text-sm font-medium mb-1">Extracurricular Activities</div>
+                              <div className="flex items-center">
+                                <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                                <span className="text-slate-200 text-sm">A Member of the University Carrom Team</span>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </motion.div>
