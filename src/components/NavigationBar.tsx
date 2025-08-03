@@ -1,18 +1,70 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import React from "react";
 
 const NavigationBar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [activeSection, setActiveSection] = React.useState("home");
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const { scrollY } = useScroll();
+
+  // Check if modal is open by observing body class
+  React.useEffect(() => {
+    const checkModalOpen = () => {
+      setIsModalOpen(document.body.classList.contains('modal-open'));
+    };
+    
+    // Initial check
+    checkModalOpen();
+    
+    // Create observer for class changes
+    const observer = new MutationObserver(checkModalOpen);
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    
+    return () => observer.disconnect();
+  }, []);
+
+  // Track scroll position for navbar styling
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 50);
+  });
+
+  // Track active section for navigation indicator
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["home", "about", "skills", "projects", "achievements"];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetHeight = element.offsetHeight;
+          
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { name: "Achievements", href: "#achievements" },
   ];
 
   const handleNavClick = (href: string) => {
@@ -27,103 +79,138 @@ const NavigationBar = () => {
   };
 
   return (
-    <motion.nav
-      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-white/10"
-      style={{ backgroundColor: 'rgba(6, 10, 25, 0.8)' }}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
+    <motion.header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isModalOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
+      } ${
+        isScrolled 
+          ? 'bg-slate-900/95 backdrop-blur-xl border-b border-slate-800/50 shadow-2xl' 
+          : 'bg-slate-900/20 backdrop-blur-sm'
+      }`}
+      initial={{ y: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+          
+          {/* Professional Logo */}
           <motion.div
-            className="flex items-center space-x-2"
-            whileHover={{ scale: 1.05 }}
+            className="flex items-center cursor-pointer group"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => handleNavClick("#home")}
           >
-            <div className="w-8 h-8 rounded-lg" style={{ backgroundColor: '#465484' }}></div>
-            <span className="text-white font-bold text-lg">Navoda</span>
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-md flex items-center justify-center">
+                <span className="text-white font-semibold text-sm">NR</span>
+              </div>
+              <div className="hidden sm:block">
+                <h1 className="text-lg font-semibold text-white group-hover:text-blue-400 transition-colors">
+                  Navoda Rajapakshe
+                </h1>
+              </div>
+            </div>
           </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <motion.a
+              <motion.button
                 key={item.name}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick(item.href);
-                }}
-                className="text-blue-200 hover:text-white transition-colors font-medium cursor-pointer"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                onClick={() => handleNavClick(item.href)}
+                className={`relative px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                  activeSection === item.name.toLowerCase()
+                    ? 'text-blue-400'
+                    : 'text-slate-300 hover:text-white'
+                }`}
+                whileHover={{ y: -1 }}
+                whileTap={{ y: 0 }}
               >
                 {item.name}
-              </motion.a>
+                {activeSection === item.name.toLowerCase() && (
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500"
+                    layoutId="navbar-indicator"
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  />
+                )}
+              </motion.button>
             ))}
+          </div>
+
+          {/* Contact Button */}
+          <div className="hidden md:flex items-center">
             <motion.button
-              className="px-4 py-2 rounded-lg font-medium transition-colors"
-              style={{ 
-                backgroundColor: '#465484',
-                color: 'white'
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              onClick={() => handleNavClick("#contact")}
+              className="px-6 py-2.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium rounded-lg hover:bg-white/20 hover:border-white/30 transition-all duration-200"
+              whileHover={{ scale: 1.02, y: -1 }}
+              whileTap={{ scale: 0.98 }}
             >
-              Resume
+              Contact Me
             </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <motion.button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-blue-200 hover:text-white transition-colors"
-              whileTap={{ scale: 0.95 }}
-            >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </motion.button>
-          </div>
+          <motion.button
+            className="md:hidden p-2 text-slate-300 hover:text-white transition-colors"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            whileTap={{ scale: 0.95 }}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </motion.button>
         </div>
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
-          <motion.div
-            className="md:hidden"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="px-2 pt-2 pb-3 space-y-1 border-t border-white/10">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(item.href);
-                  }}
-                  className="block px-3 py-2 text-blue-200 hover:text-white hover:bg-white/5 rounded-md transition-colors cursor-pointer"
-                >
-                  {item.name}
-                </a>
-              ))}
-              <button
-                className="w-full mt-4 px-4 py-2 rounded-lg font-medium transition-colors text-left"
-                style={{ 
-                  backgroundColor: '#465484',
-                  color: 'white'
-                }}
+        <motion.div
+          className={`md:hidden overflow-hidden ${isMenuOpen ? 'border-t border-slate-800/50' : ''}`}
+          initial={false}
+          animate={{
+            height: isMenuOpen ? 'auto' : 0,
+            opacity: isMenuOpen ? 1 : 0,
+          }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+        >
+          <div className="py-4 space-y-2">
+            {navItems.map((item) => (
+              <motion.button
+                key={item.name}
+                onClick={() => handleNavClick(item.href)}
+                className={`block w-full text-left px-4 py-3 text-sm font-medium transition-all duration-200 rounded-lg ${
+                  activeSection === item.name.toLowerCase()
+                    ? 'text-blue-400 bg-blue-500/10'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-800/50'
+                }`}
+                whileHover={{ x: 4 }}
+                whileTap={{ scale: 0.98 }}
               >
-                Resume
-              </button>
+                {item.name}
+              </motion.button>
+            ))}
+            <div className="pt-4 border-t border-slate-800/50">
+              <motion.button
+                onClick={() => handleNavClick("#contact")}
+                className="block w-full text-left px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors rounded-lg"
+                whileHover={{ x: 4 }}
+              >
+                Contact Me
+              </motion.button>
             </div>
-          </motion.div>
-        )}
-      </div>
-    </motion.nav>
+          </div>
+        </motion.div>
+      </nav>
+
+      {/* Progress Bar */}
+      <motion.div
+        className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+        style={{
+          scaleX: typeof window !== 'undefined' && typeof document !== 'undefined' 
+            ? scrollY.get() / (document.documentElement.scrollHeight - window.innerHeight) || 0 
+            : 0,
+          transformOrigin: "left",
+        }}
+        initial={{ scaleX: 0 }}
+      />
+    </motion.header>
   );
 };
 
