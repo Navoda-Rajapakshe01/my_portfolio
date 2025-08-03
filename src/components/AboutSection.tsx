@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import React from "react";
-import { TbBrain } from "react-icons/tb";
+import { TbBrain, TbSchool, TbBook } from "react-icons/tb";
 
 const AboutSection = () => {
   const containerVariants = {
@@ -283,7 +283,7 @@ const AboutSection = () => {
                     
                     {/* Content Card - Right Side with Enhanced Animation */}
                     <motion.div 
-                      className="w-1/2 ml-auto pl-8"
+                      className="w-full md:w-1/2 md:ml-auto md:pl-8 px-4 md:px-0"
                       initial={{ opacity: 0, x: 40, scale: 0.9 }}
                       whileInView={{ 
                         opacity: 1, 
@@ -298,30 +298,53 @@ const AboutSection = () => {
                       viewport={{ once: true, amount: 0.3 }}
                     >
                       <motion.div 
-                        className="bg-white/10 border border-slate-600/30 rounded-lg p-6 hover:bg-white/15 transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm relative overflow-hidden"
-                        whileHover={{ 
-                          scale: 1.02,
-                          boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.3)"
-                        }}
+                        className="relative group"
+                        whileHover={{ y: -5 }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
                       >
-                        {/* Animated border glow */}
-                        <motion.div
-                          className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0"
-                          whileHover={{ opacity: 1 }}
-                          transition={{ duration: 0.3 }}
-                        />
-                        <div className="mb-4">
-                          <div>
-                            <h4 className="text-lg font-medium text-white mb-1">GCE - Ordinary Level Examination</h4>
-                            <p className="text-slate-300 text-sm font-medium">Maliyadeva Balika Vidyalaya, Kurunegala</p>
-                          </div>
-                        </div>
+                        {/* Enhanced Glassmorphism Background */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-700/50 group-hover:border-blue-500/50 transition-all duration-500"></div>
                         
-                        <div className="border-t border-slate-600/30 pt-4">
-                          <div className="flex items-center">
-                            <div className="w-3 h-3 bg-emerald-500 rounded-full mr-3"></div>
-                            <span className="text-slate-200 text-sm">8As, 1B </span>
+                        {/* Subtle Glow Effect */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500"></div>
+                        
+                        {/* Content */}
+                        <div className="relative p-8">
+                          {/* Header with Icon */}
+                          <div className="flex items-start gap-4 mb-6">
+                            <motion.div 
+                              className="p-3 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl shadow-lg"
+                              whileHover={{ scale: 1.1, rotate: 5 }}
+                              transition={{ duration: 0.3 }}
+                            >
+                              <TbSchool className="w-6 h-6 text-white" />
+                            </motion.div>
+                            <div className="flex-1">
+                              <h4 className="text-xl font-bold text-white mb-2 transition-colors">GCE - Ordinary Level</h4>
+                              <p className="text-slate-400 font-medium">Maliyadeva Balika Vidyalaya, Kurunegala</p>
+                            </div>
                           </div>
+                          
+                          {/* Achievement Badge */}
+                          <div className="mb-6">
+                            <motion.div 
+                              className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/20 border border-emerald-500/30 rounded-xl"
+                              whileHover={{ scale: 1.05 }}
+                            >
+                              <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
+                              <span className="text-emerald-300 font-semibold text-sm">8As, 1B</span>
+                            </motion.div>
+                          </div>
+                          
+                          {/* Bottom Accent */}
+                          <motion.div 
+                            className="h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+                            initial={{ scaleX: 0.6, opacity: 0.6 }}
+                            whileInView={{ scaleX: 1, opacity: 1 }}
+                            whileHover={{ scaleY: 1.5 }}
+                            transition={{ duration: 0.6 }}
+                            style={{ originX: 0 }}
+                          ></motion.div>
                         </div>
                       </motion.div>
                     </motion.div>
@@ -368,7 +391,7 @@ const AboutSection = () => {
                     
                     {/* Content Card - Left Side with Enhanced Animation */}
                     <motion.div 
-                      className="w-1/2 mr-auto pr-8"
+                      className="w-full md:w-1/2 md:mr-auto md:pr-8 px-4 md:px-0"
                       initial={{ opacity: 0, x: -40, scale: 0.9 }}
                       whileInView={{ 
                         opacity: 1, 
@@ -383,44 +406,80 @@ const AboutSection = () => {
                       viewport={{ once: true, amount: 0.3 }}
                     >
                       <motion.div 
-                        className="bg-white/10 border border-slate-600/30 rounded-lg p-6 hover:bg-white/15 transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm relative overflow-hidden"
-                        whileHover={{ 
-                          scale: 1.02,
-                          boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.3)"
-                        }}
+                        className="relative group"
+                        whileHover={{ y: -5 }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
                       >
-                        {/* Animated border glow */}
-                        <motion.div
-                          className="absolute inset-0 rounded-lg bg-gradient-to-r from-purple-500/20 to-pink-500/20 opacity-0"
-                          whileHover={{ opacity: 1 }}
-                          transition={{ duration: 0.3 }}
-                        />
-                        <div className="mb-4 text-right">
-                          <div>
-                            <h4 className="text-lg font-medium text-white mb-1">GCE - Advanced Level Examination</h4>
-                            <p className="text-slate-300 text-sm font-medium">Maliyadeva Balika Vidyalaya, Kurunegala</p>
-                          </div>
-                        </div>
+                        {/* Enhanced Glassmorphism Background */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-700/50 group-hover:border-purple-500/50 transition-all duration-500"></div>
                         
-                        <div className="border-t border-slate-600/30 pt-4 space-y-3">
-                          <div className="flex items-center justify-end">
-                            <span className="inline-block bg-slate-800/50 text-slate-300 px-3 py-1 rounded text-xs font-medium">Physical Science Stream</span>
+                        {/* Subtle Glow Effect */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500"></div>
+                        
+                        {/* Content */}
+                        <div className="relative p-8 text-right">
+                          {/* Header with Icon */}
+                          <div className="flex items-start gap-4 mb-6 justify-end">
+                            <div className="flex-1 text-right">
+                              <h4 className="text-xl font-bold text-white mb-2 transition-colors">GCE - Advanced Level</h4>
+                              <p className="text-slate-400 font-medium">Maliyadeva Balika Vidyalaya, Kurunegala</p>
+                            </div>
+                            <motion.div 
+                              className="p-3 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl shadow-lg"
+                              whileHover={{ scale: 1.1, rotate: -5 }}
+                              transition={{ duration: 0.3 }}
+                            >
+                              <TbSchool className="w-6 h-6 text-white" />
+                            </motion.div>
                           </div>
                           
-                          <div className="grid grid-cols-3 gap-3">
-                            <div className="bg-slate-800/50 rounded px-3 py-2 text-center">
-                              <div className="text-white text-sm font-medium">Chemistry</div>
-                              <div className="text-slate-300 text-xs">A</div>
-                            </div>
-                            <div className="bg-slate-800/50 rounded px-3 py-2 text-center">
-                              <div className="text-white text-sm font-medium">Combined Mathematics</div>
-                              <div className="text-slate-300 text-xs">B</div>
-                            </div>
-                            <div className="bg-slate-800/50 rounded px-3 py-2 text-center">
-                              <div className="text-white text-sm font-medium">Physics</div>
-                              <div className="text-slate-300 text-xs">C</div>
+                          {/* Stream Badge */}
+                          <div className="mb-4 flex justify-end">
+                            <motion.div 
+                              className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-xl"
+                              whileHover={{ scale: 1.05 }}
+                            >
+                              <span className="text-purple-300 font-semibold text-sm">Physical Science Stream</span>
+                              <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                            </motion.div>
+                          </div>
+                          
+                          {/* Subject Results */}
+                          <div className="mb-6">
+                            <div className="grid grid-cols-3 gap-3">
+                              {[
+                                { subject: "Chemistry", grade: "A", color: "emerald" },
+                                { subject: "Mathematics", grade: "B", color: "blue" },
+                                { subject: "Physics", grade: "C", color: "orange" }
+                              ].map((item, idx) => (
+                                <motion.div 
+                                  key={idx}
+                                  className={`bg-slate-800/60 backdrop-blur-sm rounded-xl p-3 border border-slate-600/30 hover:border-${item.color}-500/50 transition-all duration-300`}
+                                  whileHover={{ scale: 1.05, y: -2 }}
+                                  initial={{ opacity: 0, y: 10 }}
+                                  whileInView={{ opacity: 1, y: 0 }}
+                                  transition={{ delay: idx * 0.1 }}
+                                >
+                                  <div className="text-center">
+                                    <div className="text-white text-sm font-semibold mb-1">{item.subject}</div>
+                                    <div className={`inline-flex items-center justify-center w-8 h-8 bg-${item.color}-500/20 rounded-lg border border-${item.color}-500/30`}>
+                                      <span className={`text-${item.color}-300 font-bold text-sm`}>{item.grade}</span>
+                                    </div>
+                                  </div>
+                                </motion.div>
+                              ))}
                             </div>
                           </div>
+                          
+                          {/* Bottom Accent */}
+                          <motion.div 
+                            className="h-1 bg-gradient-to-l from-purple-500 to-pink-500 rounded-full"
+                            initial={{ scaleX: 0.6, opacity: 0.6 }}
+                            whileInView={{ scaleX: 1, opacity: 1 }}
+                            whileHover={{ scaleY: 1.5 }}
+                            transition={{ duration: 0.6 }}
+                            style={{ originX: 1 }}
+                          ></motion.div>
                         </div>
                       </motion.div>
                     </motion.div>
@@ -474,7 +533,7 @@ const AboutSection = () => {
                     
                     {/* Content Card - Right Side with Enhanced Animation */}
                     <motion.div 
-                      className="w-1/2 ml-auto pl-8"
+                      className="w-full md:w-1/2 md:ml-auto md:pl-8 px-4 md:px-0"
                       initial={{ opacity: 0, x: 40, scale: 0.9 }}
                       whileInView={{ 
                         opacity: 1, 
@@ -489,51 +548,103 @@ const AboutSection = () => {
                       viewport={{ once: true, amount: 0.3 }}
                     >
                       <motion.div 
-                        className="bg-white/10 border border-slate-600/30 rounded-lg p-6 hover:bg-white/15 transition-all duration-300 relative overflow-hidden shadow-lg hover:shadow-xl backdrop-blur-sm"
-                        whileHover={{ 
-                          scale: 1.02,
-                          boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.3)"
-                        }}
+                        className="relative group"
+                        whileHover={{ y: -5 }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
                       >
-                        {/* Animated border glow */}
-                        <motion.div
-                          className="absolute inset-0 rounded-lg bg-gradient-to-r from-emerald-500/20 to-blue-500/20 opacity-0"
-                          whileHover={{ opacity: 1 }}
-                          transition={{ duration: 0.3 }}
-                        />
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600"></div>
+                        {/* Enhanced Glassmorphism Background */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-700/50 group-hover:border-emerald-500/50 transition-all duration-500"></div>
                         
-                        <div className="mb-4">
-                          <div>
-                            <h4 className="text-lg font-medium text-white mb-1">University of Moratuwa</h4>
-                            <p className="text-slate-300 text-sm font-medium">BSc (Hons) in Information Technology and Management</p>
-                          </div>
-                        </div>
+                        {/* Subtle Glow Effect */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500"></div>
                         
-                        <div className="border-t border-slate-600/30 pt-4 space-y-4">
-                          <div className="grid grid-cols-1 gap-4">
-                            <div className="bg-slate-800/50 rounded px-4 py-3">
-                              <div className="text-white text-sm font-medium mb-1">Current Status</div>
-                              <div className="flex items-center">
-                                <div className="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
-                                <span className="text-slate-200 text-sm">Third Year Student</span>
-                              </div>
+                        {/* Top Accent Line */}
+                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-t-2xl"></div>
+                        
+                        {/* Content */}
+                        <div className="relative p-8">
+                          {/* Header with Icon */}
+                          <div className="flex items-start gap-4 mb-6">
+                            <motion.div 
+                              className="p-3 bg-gradient-to-br from-emerald-500 to-blue-500 rounded-xl shadow-lg"
+                              whileHover={{ scale: 1.1, rotate: 5 }}
+                              transition={{ duration: 0.3 }}
+                              animate={{ 
+                                boxShadow: [
+                                  "0 0 15px rgba(34, 197, 94, 0.6)",
+                                  "0 0 25px rgba(34, 197, 94, 0.4)",
+                                  "0 0 15px rgba(34, 197, 94, 0.6)"
+                                ]
+                              }}
+                            >
+                              <TbBook className="w-6 h-6 text-white" />
+                            </motion.div>
+                            <div className="flex-1">
+                              <h4 className="text-xl font-bold text-white mb-2 transition-colors">University of Moratuwa</h4>
+                              <p className="text-slate-400 font-medium">BSc (Hons) in Information Technology and Management</p>
                             </div>
-                            <div className="bg-slate-800/50 rounded px-4 py-3">
-                              <div className="text-white text-sm font-medium mb-1">Academic Performance</div>
-                              <div className="flex items-center">
-                                <div className="w-3 h-3 bg-emerald-500 rounded-full mr-2"></div>
-                                <span className="text-slate-200 text-sm">CGPA: 3.77</span>
-                              </div>
-                            </div>
-                            <div className="bg-slate-800/50 rounded px-4 py-3">
-                              <div className="text-white text-sm font-medium mb-1">Extracurricular Activities</div>
-                              <div className="flex items-center">
-                                <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
-                                <span className="text-slate-200 text-sm">A Member of the University Carrom Team</span>
-                              </div>
-                            </div>
+                            <motion.div 
+                              className="px-3 py-1 bg-emerald-500/20 border border-emerald-500/30 rounded-full"
+                              animate={{ scale: [1, 1.05, 1] }}
+                              transition={{ duration: 2, repeat: Infinity }}
+                            >
+                              <span className="text-emerald-300 text-sm font-semibold">Current</span>
+                            </motion.div>
                           </div>
+                          
+                          {/* Stats Grid */}
+                          <div className="grid grid-cols-1 gap-4 mb-6">
+                            {[
+                              { 
+                                label: "Academic Status", 
+                                value: "Third Year Undergraduate", 
+                                color: "blue",
+                                icon: "📚"
+                              },
+                              { 
+                                label: "CGPA", 
+                                value: "3.77", 
+                                color: "emerald",
+                                icon: "🎓"
+                              },
+                              { 
+                                label: "Extracurricular", 
+                                value: "University Carrom Team - Member", 
+                                color: "yellow",
+                                icon: "🏆"
+                              }
+                            ].map((item, idx) => (
+                              <motion.div 
+                                key={idx}
+                                className="bg-slate-800/60 backdrop-blur-sm rounded-xl p-4 border border-slate-600/30 hover:border-slate-500/50 transition-all duration-300"
+                                whileHover={{ scale: 1.02, x: 5 }}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ delay: idx * 0.1 }}
+                              >
+                                <div className="flex items-center gap-3">
+                                  <span className="text-xl">{item.icon}</span>
+                                  <div className="flex-1">
+                                    <div className="text-slate-400 text-sm font-medium mb-1">{item.label}</div>
+                                    <div className="flex items-center gap-2">
+                                      <div className={`w-2 h-2 bg-${item.color}-400 rounded-full`}></div>
+                                      <span className="text-white font-semibold">{item.value}</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </motion.div>
+                            ))}
+                          </div>
+                          
+                          {/* Bottom Accent */}
+                          <motion.div 
+                            className="h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"
+                            initial={{ scaleX: 0.6, opacity: 0.6 }}
+                            whileInView={{ scaleX: 1, opacity: 1 }}
+                            whileHover={{ scaleY: 1.5 }}
+                            transition={{ duration: 0.6 }}
+                            style={{ originX: 0 }}
+                          ></motion.div>
                         </div>
                       </motion.div>
                     </motion.div>

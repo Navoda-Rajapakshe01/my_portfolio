@@ -333,7 +333,7 @@ const ProjectsSection = () => {
                 <div className="p-6">
                   {/* Project Title */}
                   <motion.h3 
-                    className="text-xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-500 group-hover:bg-clip-text transition-all duration-300 line-clamp-2"
+                    className="text-xl font-bold text-white mb-2 transition-all duration-300 line-clamp-2"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
@@ -405,7 +405,7 @@ const ProjectsSection = () => {
                   >
                     <motion.button
                       onClick={() => setSelectedProject(project)}
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-lg text-blue-300 hover:text-white hover:from-blue-500/30 hover:to-purple-500/30 transition-all duration-300 text-sm font-medium"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-lg text-blue-300 transition-all duration-300 text-sm font-medium"
                       whileHover={{ scale: 1.02, y: -2 }}
                       whileTap={{ scale: 0.98 }}
                     >
@@ -505,7 +505,7 @@ const ProjectsSection = () => {
                   </div>
                   <button
                     onClick={() => setSelectedProject(null)}
-                    className="p-2 text-slate-400 hover:text-white transition-colors rounded-lg hover:bg-slate-800/50"
+                    className="p-2 text-slate-400 transition-colors rounded-lg hover:bg-slate-800/50"
                   >
                     <TbX className="w-6 h-6" />
                   </button>

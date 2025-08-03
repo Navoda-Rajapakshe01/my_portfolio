@@ -7,6 +7,8 @@ import AboutSection from "../components/AboutSection";
 import SkillsSection from "../components/SkillsSection";
 import ProjectsSection from "../components/ProjectsSection";
 import AchievementsSection from "../components/AchievementsSection";
+import ContactSection from "../components/ContactSection";
+import Footer from "../components/Footer";
 
 export default function HomePage() {
   return (
@@ -42,6 +44,12 @@ export default function HomePage() {
 
       {/* Achievements Section */}
       <AchievementsSection />
+
+      {/* Contact Section */}
+      <ContactSection />
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

@@ -38,7 +38,7 @@ const NavigationBar = () => {
   // Track active section for navigation indicator
   React.useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "skills", "projects", "achievements"];
+      const sections = ["home", "about", "skills", "projects", "achievements", "contact"];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -65,6 +65,7 @@ const NavigationBar = () => {
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
     { name: "Achievements", href: "#achievements" },
+    { name: "Contact", href: "#contact" },
   ];
 
   const handleNavClick = (href: string) => {
@@ -138,18 +139,6 @@ const NavigationBar = () => {
             ))}
           </div>
 
-          {/* Contact Button */}
-          <div className="hidden md:flex items-center">
-            <motion.button
-              onClick={() => handleNavClick("#contact")}
-              className="px-6 py-2.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium rounded-lg hover:bg-white/20 hover:border-white/30 transition-all duration-200"
-              whileHover={{ scale: 1.02, y: -1 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Contact Me
-            </motion.button>
-          </div>
-
           {/* Mobile Menu Button */}
           <motion.button
             className="md:hidden p-2 text-slate-300 hover:text-white transition-colors"
@@ -186,15 +175,6 @@ const NavigationBar = () => {
                 {item.name}
               </motion.button>
             ))}
-            <div className="pt-4 border-t border-slate-800/50">
-              <motion.button
-                onClick={() => handleNavClick("#contact")}
-                className="block w-full text-left px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors rounded-lg"
-                whileHover={{ x: 4 }}
-              >
-                Contact Me
-              </motion.button>
-            </div>
           </div>
         </motion.div>
       </nav>

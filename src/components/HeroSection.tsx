@@ -18,6 +18,27 @@ const HeroSection = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const handleContactClick = () => {
+    const contactElement = document.querySelector('#contact');
+    if (contactElement) {
+      contactElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
+  const handleDownloadCV = () => {
+    // Create a link element and trigger download
+    const link = document.createElement('a');
+    link.href = '/Navoda Rajapakshe - SE.pdf';
+    link.download = '/Navoda Rajapakshe - SE.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <main id="home" className="relative min-h-screen flex items-center justify-center px-4 py-12 pt-24">
       {/* Minimal Background Pattern */}
@@ -79,31 +100,25 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.8 }}
             >
-              <motion.a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group"
+              <motion.button
+                onClick={handleDownloadCV}
+                className="group w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl flex items-center justify-center gap-3 shadow-lg shadow-blue-500/25 transition-all duration-300"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <button className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl flex items-center justify-center gap-3 shadow-lg shadow-blue-500/25 transition-all duration-300">
-                  <Download className="w-5 h-5" />
-                  Download CV
-                </button>
-              </motion.a>
+                <Download className="w-5 h-5" />
+                Download CV
+              </motion.button>
 
-              <motion.a
-                href="#contact"
-                className="group"
+              <motion.button
+                onClick={handleContactClick}
+                className="group w-full sm:w-auto px-8 py-4 border-2 border-slate-600 hover:border-slate-500 text-slate-300 hover:text-white font-semibold rounded-xl flex items-center justify-center gap-3 hover:bg-slate-800/50 transition-all duration-300"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <button className="w-full sm:w-auto px-8 py-4 border-2 border-slate-600 hover:border-slate-500 text-slate-300 hover:text-white font-semibold rounded-xl flex items-center justify-center gap-3 hover:bg-slate-800/50 transition-all duration-300">
-                  Get in touch
-                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                </button>
-              </motion.a>
+                Get in touch
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </motion.button>
             </motion.div>
 
             {/* Social Links */}
