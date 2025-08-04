@@ -107,7 +107,7 @@ const AboutSection = () => {
             viewport={{ once: true }}
           >
             <p className="mb-4">
-              I'm a passionate and hardworking third-year undergraduate at the University of Moratuwa, 
+              A passionate and hardworking third-year undergraduate at the University of Moratuwa, 
               currently pursuing a B.Sc. (Hons) in Information Technology and Management. I love working 
               in collaborative environments, solving real-world problems, and continuously growing as a 
               developer and individual.
