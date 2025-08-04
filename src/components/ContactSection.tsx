@@ -216,7 +216,7 @@ const ContactSection = () => {
         >
           <h2 className="text-5xl md:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Let's Work Together
+              Let&apos;s Work Together
             </span>
           </h2>
           

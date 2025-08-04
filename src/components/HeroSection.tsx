@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Download, ArrowRight } from "lucide-react";
+import Image from "next/image";
 import React from "react";
 
 const HeroSection = () => {
@@ -152,10 +153,13 @@ const HeroSection = () => {
                 transition={{ duration: 0.3 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10" />
-                <img
+                <Image
                   src="/me.jpeg"
                   alt="Navoda Rajapakshe"
+                  width={320}
+                  height={384}
                   className="w-full h-full object-cover"
+                  priority
                 />
                 </motion.div>
             </div>
