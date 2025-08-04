@@ -5,8 +5,6 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import React from "react";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   const socialLinks = [
     {
       name: "GitHub",
