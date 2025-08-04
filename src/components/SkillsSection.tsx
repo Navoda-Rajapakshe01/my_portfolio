@@ -135,9 +135,9 @@ const SkillsSection = () => {
           {/* Background glow effect */}
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5 rounded-xl blur-xl"></div>
           
-          <div className="relative bg-slate-900/80 backdrop-blur-lg rounded-xl border border-slate-700/50 p-8 font-mono text-sm overflow-hidden">
+          <div className="relative bg-slate-900/80 backdrop-blur-lg rounded-xl border border-slate-700/50 p-4 sm:p-6 md:p-8 font-mono text-xs sm:text-sm overflow-hidden">
             {/* Decorative header */}
-            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-700/30">
+            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 pb-3 sm:pb-4 border-b border-slate-700/30">
               <div className="flex gap-2">
                 <div className="w-3 h-3 rounded-full bg-red-500 shadow-lg shadow-red-500/30"></div>
                 <div className="w-3 h-3 rounded-full bg-yellow-500 shadow-lg shadow-yellow-500/30"></div>
