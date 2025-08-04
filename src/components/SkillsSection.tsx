@@ -17,7 +17,7 @@ import {
   SiGit,
   SiGithub
 } from "react-icons/si";
-import { TbBrandMysql, TbCode, TbDatabase, TbTools, TbBulb, TbBrandVscode, TbSql, TbFolder, TbFolderOpen, TbFile, TbX, TbCircleFilled } from "react-icons/tb";
+import { TbBrandMysql, TbBrandVscode, TbSql } from "react-icons/tb";
 
 const SkillsSection = () => {
   const toggleFolder = (folderName: string) => {
@@ -28,53 +28,6 @@ const SkillsSection = () => {
       newExpanded.add(folderName);
     }
     setExpandedFolders(newExpanded);
-  };
-
-  const expandAll = () => {
-    const allFolders = skillsFileTree.map(category => category.folder);
-    setExpandedFolders(new Set(allFolders));
-  };
-
-  const collapseAll = () => {
-    setExpandedFolders(new Set());
-  };
-
-  const copyTreeStructure = () => {
-    let treeText = "";
-    skillsFileTree.forEach(category => {
-      treeText += `📁 ${category.folder}/\n`;
-      category.files.forEach(file => {
-        treeText += `   └── ${file.name}\n`;
-      });
-      treeText += "\n";
-    });
-    
-    navigator.clipboard.writeText(treeText).then(() => {
-      // You could add a toast notification here
-      console.log("Tree structure copied to clipboard!");
-    });
-  };
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.25, 0.46, 0.45, 0.94] as const,
-      },
-    },
   };
 
   const skillsFileTree = [

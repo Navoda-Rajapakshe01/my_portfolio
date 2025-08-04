@@ -47,7 +47,7 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            {socialLinks.map((link, index) => (
+            {socialLinks.map((link) => (
               <motion.a
                 key={link.name}
                 href={link.href}

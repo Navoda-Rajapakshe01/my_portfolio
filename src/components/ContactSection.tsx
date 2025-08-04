@@ -5,16 +5,12 @@ import React from "react";
 import emailjs from 'emailjs-com';
 import { 
   TbMail, 
-  TbPhone, 
   TbMapPin, 
   TbBrandLinkedin, 
   TbBrandGithub, 
-  TbBrandTwitter,
   TbSend,
   TbUser,
   TbMessage,
-  TbClock,
-  TbExternalLink,
   TbCheck,
   TbX,
   TbLoader
@@ -139,14 +135,16 @@ const ContactSection = () => {
       
       resetForm();
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Form submission error:', error);
       
       let errorMessage = "Oops! Something went wrong. Please try again or contact me directly via email.";
       
       // Provide more specific error messages
-      if (error.status === 412) {
-        if (error.text?.includes('Gmail_API') && error.text?.includes('insufficient authentication scopes')) {
+      const emailError = error as { status?: number; text?: string; message?: string };
+      
+      if (emailError.status === 412) {
+        if (emailError.text?.includes('Gmail_API') && emailError.text?.includes('insufficient authentication scopes')) {
           errorMessage = "Email service authentication issue. Opening your email client as a backup...";
           
           // Fallback: Open user's email client
@@ -158,9 +156,9 @@ const ContactSection = () => {
         } else {
           errorMessage = "Email template configuration issue. Please contact me directly at navodar01@gmail.com";
         }
-      } else if (error.status === 400) {
+      } else if (emailError.status === 400) {
         errorMessage = "Invalid email configuration. Please contact me directly at navodar01@gmail.com";
-      } else if (error.message?.includes('credentials')) {
+      } else if (emailError.message?.includes('credentials')) {
         errorMessage = "Email service not configured. Please contact me directly at navodar01@gmail.com";
       }
       
@@ -237,8 +235,8 @@ const ContactSection = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
             viewport={{ once: true }}
           >
-            Have a project in mind or want to collaborate? I'd love to hear from you. 
-            Let's create something amazing together!
+            Have a project in mind or want to collaborate? I&apos;d love to hear from you. 
+            Let&apos;s create something amazing together!
           </motion.p>
         </motion.div>
 

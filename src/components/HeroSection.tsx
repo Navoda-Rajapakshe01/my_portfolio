@@ -5,19 +5,6 @@ import { Github, Linkedin, Mail, Download, ArrowRight } from "lucide-react";
 import React from "react";
 
 const HeroSection = () => {
-  const [time, setTime] = React.useState(new Date());
-
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      try {
-        setTime(new Date());
-      } catch (error) {
-        console.warn('Time update failed:', error);
-      }
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
   const handleContactClick = () => {
     const contactElement = document.querySelector('#contact');
     if (contactElement) {
@@ -68,7 +55,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
               >
-                Hi, I'm{" "}
+                Hi, I&apos;m{" "}
                 <span className="relative">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
                     Navoda

@@ -20,11 +20,27 @@ import {
   SiArduino,
   SiFirebase
 } from "react-icons/si";
-import { TbExternalLink, TbBrandGithub, TbCode, TbRocket, TbSql, TbDevices, TbX, TbChevronLeft, TbChevronRight } from "react-icons/tb";
+import { TbBrandGithub, TbCode, TbRocket, TbSql, TbDevices, TbX, TbChevronLeft, TbChevronRight } from "react-icons/tb";
 
 const ProjectsSection = () => {
+  // Define project type
+  type Project = {
+    id: number;
+    title: string;
+    description: string;
+    image: string;
+    tech?: string[];
+    techStack: string[];
+    github?: string;
+    githubUrl?: string;
+    category?: string;
+    features?: string[];
+    keyFeatures: string[];
+    role: string;
+  };
+
   // Projects data
-  const projects = [
+  const projects: Project[] = [
     {
       id: 1,
       title: "WayFinde",
@@ -102,7 +118,7 @@ const ProjectsSection = () => {
     },
   ];
 
-  const [selectedProject, setSelectedProject] = React.useState<any>(null);
+  const [selectedProject, setSelectedProject] = React.useState<Project | null>(null);
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const projectsPerSlide = 3;
   const totalSlides = Math.ceil(projects.length / projectsPerSlide);
@@ -131,7 +147,7 @@ const ProjectsSection = () => {
   };
 
   // Tech stack icon mapping
-  const techIcons: { [key: string]: React.ComponentType<any> } = {
+  const techIcons: { [key: string]: React.ComponentType<{ className?: string }> } = {
     "React": SiReact,
     "Next.js": SiNextdotjs,
     "TypeScript": SiTypescript,
@@ -373,7 +389,7 @@ const ProjectsSection = () => {
                               {/* Tech Stack */}
                               <div className="mb-4">
                                 <div className="flex flex-wrap gap-2">
-                                  {project.techStack.map((tech, techIndex) => (
+                                  {project.techStack.map((tech) => (
                                     <div
                                       key={tech}
                                       className={`flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium transition-all duration-200 hover:scale-105 ${getTechColor(tech)}`}
