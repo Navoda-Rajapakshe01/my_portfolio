@@ -208,21 +208,38 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-20 px-6 lg:px-8 relative">
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
+        {/* Creative Header */}
         <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: -50, scale: 0.9 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Let's Work Together
+          <h2 className="text-5xl md:text-6xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+              Let's Work Together
+            </span>
           </h2>
-          <p className="text-slate-300 text-lg max-w-3xl mx-auto leading-relaxed">
+          
+          <motion.div 
+            className="w-32 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto rounded-full"
+            initial={{ width: 0 }}
+            whileInView={{ width: "8rem" }}
+            transition={{ duration: 1.5, delay: 0.5 }}
+            viewport={{ once: true }}
+          />
+          
+          <motion.p 
+            className="text-slate-300 text-lg mt-6 max-w-3xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            viewport={{ once: true }}
+          >
             Have a project in mind or want to collaborate? I'd love to hear from you. 
             Let's create something amazing together!
-          </p>
+          </motion.p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -286,23 +303,6 @@ const ContactSection = () => {
                 })}
               </div>
             </div>
-
-            {/* Availability Status */}
-            <motion.div
-              className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
-                <div>
-                  <p className="text-emerald-400 font-medium text-sm">Available for Projects</p>
-                  <p className="text-slate-300 text-xs">Open to new opportunities and collaborations</p>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* Contact Form */}

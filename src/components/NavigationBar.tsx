@@ -65,8 +65,9 @@ const NavigationBar = () => {
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
     { name: "Achievements", href: "#achievements" },
-    { name: "Contact", href: "#contact" },
   ];
+
+  const contactItem = { name: "Contact", href: "#contact" };
 
   const handleNavClick = (href: string) => {
     setIsMenuOpen(false);
@@ -113,7 +114,7 @@ const NavigationBar = () => {
             </div>
           </motion.div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Center */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <motion.button
@@ -139,6 +140,22 @@ const NavigationBar = () => {
             ))}
           </div>
 
+          {/* Contact Button - Right */}
+          <div className="hidden md:flex items-center">
+            <motion.button
+              onClick={() => handleNavClick(contactItem.href)}
+              className={`relative px-6 py-2 text-sm font-medium transition-all duration-200 rounded-lg border ${
+                activeSection === contactItem.name.toLowerCase()
+                  ? 'text-blue-400 border-blue-400 bg-blue-500/10'
+                  : 'text-slate-300 hover:text-white border-slate-600 hover:border-blue-400 hover:bg-blue-500/10'
+              }`}
+              whileHover={{ y: -1, scale: 1.02 }}
+              whileTap={{ y: 0, scale: 0.98 }}
+            >
+              {contactItem.name}
+            </motion.button>
+          </div>
+
           {/* Mobile Menu Button */}
           <motion.button
             className="md:hidden p-2 text-slate-300 hover:text-white transition-colors"
@@ -160,7 +177,7 @@ const NavigationBar = () => {
           transition={{ duration: 0.3, ease: "easeOut" }}
         >
           <div className="py-4 space-y-2">
-            {navItems.map((item) => (
+            {[...navItems, contactItem].map((item) => (
               <motion.button
                 key={item.name}
                 onClick={() => handleNavClick(item.href)}

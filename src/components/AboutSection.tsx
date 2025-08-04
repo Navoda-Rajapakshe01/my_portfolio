@@ -155,89 +155,17 @@ const AboutSection = () => {
                 {/* Background Timeline Line */}
                 <div className="absolute left-1/2 -translate-x-1/2 top-0 w-px h-full bg-slate-800/50" />
                 
-                {/* Animated Timeline Line with Drawing Effect */}
+                {/* Simplified Timeline Line */}
                 <motion.div 
-                  className="absolute left-1/2 -translate-x-1/2 top-0 w-px bg-gradient-to-b from-blue-500 via-purple-500 to-emerald-500 shadow-lg"
-                  style={{ boxShadow: '0 0 10px rgba(59, 130, 246, 0.5)' }}
+                  className="absolute left-1/2 -translate-x-1/2 top-0 w-px bg-gradient-to-b from-blue-500 via-purple-500 to-emerald-500"
                   initial={{ height: 0 }}
                   whileInView={{ height: "100%" }}
                   transition={{ 
-                    duration: 2.5, 
-                    delay: 0.3,
-                    ease: "easeOut"
+                    duration: 1.5, 
+                    delay: 0.2,
+                    ease: "easeInOut"
                   }}
-                  viewport={{ once: true, amount: 0.1 }}
-                />
-                
-                {/* Animated Drawing Tip */}
-                <motion.div
-                  className="absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 shadow-lg"
-                  style={{ 
-                    boxShadow: '0 0 15px rgba(59, 130, 246, 0.8), 0 0 25px rgba(168, 85, 247, 0.4)',
-                    filter: 'blur(0.5px)'
-                  }}
-                  initial={{ y: 0, opacity: 0 }}
-                  whileInView={{ 
-                    y: "calc(100vh - 100px)",
-                    opacity: [0, 1, 1, 0],
-                    scale: [0.8, 1.2, 1, 0.8]
-                  }}
-                  transition={{ 
-                    duration: 2.5, 
-                    delay: 0.3,
-                    ease: "easeOut",
-                    opacity: { times: [0, 0.1, 0.9, 1] }
-                  }}
-                  viewport={{ once: true, amount: 0.1 }}
-                />
-                {/* Sparkle Effects Along Timeline */}
-                <motion.div
-                  className="absolute left-1/2 -translate-x-1/2 w-1 h-1 bg-white rounded-full opacity-70"
-                  style={{ top: '15%' }}
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileInView={{ 
-                    scale: [0, 1.5, 0],
-                    opacity: [0, 1, 0]
-                  }}
-                  transition={{ 
-                    duration: 0.8, 
-                    delay: 1.0,
-                    repeat: Infinity,
-                    repeatDelay: 3
-                  }}
-                  viewport={{ once: true }}
-                />
-                <motion.div
-                  className="absolute left-1/2 -translate-x-1/2 w-1 h-1 bg-blue-300 rounded-full opacity-60"
-                  style={{ top: '45%', left: 'calc(50% + 8px)' }}
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileInView={{ 
-                    scale: [0, 1.2, 0],
-                    opacity: [0, 0.8, 0]
-                  }}
-                  transition={{ 
-                    duration: 1.0, 
-                    delay: 1.5,
-                    repeat: Infinity,
-                    repeatDelay: 4
-                  }}
-                  viewport={{ once: true }}
-                />
-                <motion.div
-                  className="absolute left-1/2 -translate-x-1/2 w-1 h-1 bg-purple-300 rounded-full opacity-50"
-                  style={{ top: '75%', left: 'calc(50% - 8px)' }}
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileInView={{ 
-                    scale: [0, 1.8, 0],
-                    opacity: [0, 0.9, 0]
-                  }}
-                  transition={{ 
-                    duration: 0.6, 
-                    delay: 2.0,
-                    repeat: Infinity,
-                    repeatDelay: 5
-                  }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.2 }}
                 />
                 
                 {/* Timeline Entries */}
@@ -250,30 +178,13 @@ const AboutSection = () => {
                     transition={{ duration: 0.6, delay: 0.6 }}
                     viewport={{ once: true, amount: 0.3 }}
                   >
-                    {/* Timeline Marker with Enhanced Animation */}
+                    {/* Simplified Timeline Marker */}
                     <motion.div 
-                      className="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-500 border-2 border-slate-800 rounded-full z-20 shadow-lg"
-                      style={{ boxShadow: '0 0 15px rgba(59, 130, 246, 0.6)' }}
+                      className="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-500 border-2 border-slate-800 rounded-full z-20"
                       initial={{ scale: 0, opacity: 0 }}
-                      whileInView={{ 
-                        scale: [0, 1.3, 1], 
-                        opacity: 1,
-                        boxShadow: [
-                          '0 0 0px rgba(59, 130, 246, 0)',
-                          '0 0 20px rgba(59, 130, 246, 0.8)',
-                          '0 0 15px rgba(59, 130, 246, 0.6)'
-                        ]
-                      }}
-                      transition={{ 
-                        duration: 0.8, 
-                        delay: 0.8,
-                        ease: "easeOut"
-                      }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
                       viewport={{ once: true }}
-                      whileHover={{ 
-                        scale: 1.2,
-                        boxShadow: '0 0 25px rgba(59, 130, 246, 0.8)'
-                      }}
                     />
                     
                     {/* Gradient Date Label - Left Side (close to dot) */}
@@ -358,30 +269,13 @@ const AboutSection = () => {
                     transition={{ duration: 0.6, delay: 0.9 }}
                     viewport={{ once: true, amount: 0.3 }}
                   >
-                    {/* Timeline Marker with Enhanced Animation */}
+                    {/* Simplified Timeline Marker */}
                     <motion.div 
-                      className="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 border-2 border-slate-800 rounded-full z-20 shadow-lg"
-                      style={{ boxShadow: '0 0 15px rgba(168, 85, 247, 0.6)' }}
+                      className="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 border-2 border-slate-800 rounded-full z-20"
                       initial={{ scale: 0, opacity: 0 }}
-                      whileInView={{ 
-                        scale: [0, 1.3, 1], 
-                        opacity: 1,
-                        boxShadow: [
-                          '0 0 0px rgba(168, 85, 247, 0)',
-                          '0 0 20px rgba(168, 85, 247, 0.8)',
-                          '0 0 15px rgba(168, 85, 247, 0.6)'
-                        ]
-                      }}
-                      transition={{ 
-                        duration: 0.8, 
-                        delay: 1.1,
-                        ease: "easeOut"
-                      }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 0.4 }}
                       viewport={{ once: true }}
-                      whileHover={{ 
-                        scale: 1.2,
-                        boxShadow: '0 0 25px rgba(168, 85, 247, 0.8)'
-                      }}
                     />
                     
                     {/* Gradient Date Label - Right Side (close to dot) */}
@@ -444,28 +338,24 @@ const AboutSection = () => {
                             </motion.div>
                           </div>
                           
-                          {/* Subject Results */}
+                          {/* Subject Results - Simplified */}
                           <div className="mb-6">
-                            <div className="grid grid-cols-3 gap-3">
+                            <div className="grid grid-cols-1 gap-3">
                               {[
-                                { subject: "Chemistry", grade: "A", color: "emerald" },
-                                { subject: "Mathematics", grade: "B", color: "blue" },
-                                { subject: "Physics", grade: "C", color: "orange" }
+                                { subject: "Chemistry", grade: "A" },
+                                { subject: "Combined Mathematics", grade: "B" },
+                                { subject: "Physics", grade: "C" }
                               ].map((item, idx) => (
                                 <motion.div 
                                   key={idx}
-                                  className={`bg-slate-800/60 backdrop-blur-sm rounded-xl p-3 border border-slate-600/30 hover:border-${item.color}-500/50 transition-all duration-300`}
-                                  whileHover={{ scale: 1.05, y: -2 }}
-                                  initial={{ opacity: 0, y: 10 }}
-                                  whileInView={{ opacity: 1, y: 0 }}
-                                  transition={{ delay: idx * 0.1 }}
+                                  className="flex items-center justify-between p-3 bg-slate-800/60 backdrop-blur-sm rounded-lg border border-slate-600/30"
+                                  initial={{ opacity: 0, x: 20 }}
+                                  whileInView={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: 1.4 + idx * 0.1 }}
+                                  viewport={{ once: true }}
                                 >
-                                  <div className="text-center">
-                                    <div className="text-white text-sm font-semibold mb-1">{item.subject}</div>
-                                    <div className={`inline-flex items-center justify-center w-8 h-8 bg-${item.color}-500/20 rounded-lg border border-${item.color}-500/30`}>
-                                      <span className={`text-${item.color}-300 font-bold text-sm`}>{item.grade}</span>
-                                    </div>
-                                  </div>
+                                  <span className="text-white font-medium">{item.subject}</span>
+                                  <span className="text-purple-300 font-bold text-lg">{item.grade}</span>
                                 </motion.div>
                               ))}
                             </div>
@@ -493,37 +383,13 @@ const AboutSection = () => {
                     transition={{ duration: 0.6, delay: 1.2 }}
                     viewport={{ once: true, amount: 0.3 }}
                   >
-                    {/* Current Timeline Marker with Pulsing Effect */}
+                    {/* Simplified Current Timeline Marker */}
                     <motion.div 
-                      className="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-emerald-500 to-blue-500 border-2 border-slate-800 rounded-full z-20 shadow-lg"
-                      style={{ boxShadow: '0 0 15px rgba(34, 197, 94, 0.6)' }}
+                      className="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-emerald-500 to-blue-500 border-2 border-slate-800 rounded-full z-20"
                       initial={{ scale: 0, opacity: 0 }}
-                      whileInView={{ 
-                        scale: [0, 1.3, 1], 
-                        opacity: 1,
-                        boxShadow: [
-                          '0 0 0px rgba(34, 197, 94, 0)',
-                          '0 0 20px rgba(34, 197, 94, 0.8)',
-                          '0 0 15px rgba(34, 197, 94, 0.6)'
-                        ]
-                      }}
-                      transition={{ 
-                        duration: 0.8, 
-                        delay: 1.4,
-                        ease: "easeOut"
-                      }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 0.5 }}
                       viewport={{ once: true }}
-                      animate={{ 
-                        boxShadow: [
-                          "0 0 15px rgba(34, 197, 94, 0.6)", 
-                          "0 0 25px rgba(34, 197, 94, 0.9)", 
-                          "0 0 15px rgba(34, 197, 94, 0.6)"
-                        ]
-                      }}
-                      whileHover={{ 
-                        scale: 1.2,
-                        boxShadow: '0 0 30px rgba(34, 197, 94, 0.9)'
-                      }}
                     />
                     
                     {/* Gradient Date Label - Left Side (close to dot) */}
@@ -569,13 +435,6 @@ const AboutSection = () => {
                               className="p-3 bg-gradient-to-br from-emerald-500 to-blue-500 rounded-xl shadow-lg"
                               whileHover={{ scale: 1.1, rotate: 5 }}
                               transition={{ duration: 0.3 }}
-                              animate={{ 
-                                boxShadow: [
-                                  "0 0 15px rgba(34, 197, 94, 0.6)",
-                                  "0 0 25px rgba(34, 197, 94, 0.4)",
-                                  "0 0 15px rgba(34, 197, 94, 0.6)"
-                                ]
-                              }}
                             >
                               <TbBook className="w-6 h-6 text-white" />
                             </motion.div>
@@ -585,8 +444,6 @@ const AboutSection = () => {
                             </div>
                             <motion.div 
                               className="px-3 py-1 bg-emerald-500/20 border border-emerald-500/30 rounded-full"
-                              animate={{ scale: [1, 1.05, 1] }}
-                              transition={{ duration: 2, repeat: Infinity }}
                             >
                               <span className="text-emerald-300 text-sm font-semibold">Current</span>
                             </motion.div>

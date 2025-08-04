@@ -15,7 +15,7 @@ const Footer = () => {
     },
     {
       name: "LinkedIn",
-      href: "https://linkedin.com/in/navoda-rajapakshe",
+      href: "https://www.linkedin.com/in/navoda-rajapakshe-4a290226a/",
       icon: Linkedin,
     },
     {
