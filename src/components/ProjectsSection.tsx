@@ -103,7 +103,7 @@ const ProjectsSection = () => {
       role: "Hardware Project - Team Member",
       description: "The smart shoe system is engineered to detect various walking abnormalities in children—including intoeing, toe walking, limping, internal and external tibial torsion—and provide real-time, non-invasive feedback to encourage correct gait patterns. Our solution addresses the limitations of traditional, often invasive, treatment methods by enabling early diagnosis and continuous monitoring in a comfortable and child-friendly manner.",
       techStack: ["ESP32", "Arduino", "PCB Design", "3D Modeling", "HTML5", "CSS3", "Firebase"],
-      image: "/hardware.jfif",
+      image: "/arduino.jpg",
       // Enhanced details for modal
       keyFeatures: [
         "Gait Abnormality Detection - Identifies common walking issues in children such as intoeing, toe walking, limping, internal & external tibial torsion",
