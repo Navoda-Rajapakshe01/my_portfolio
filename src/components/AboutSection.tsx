@@ -244,7 +244,6 @@ const AboutSection = () => {
                               className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/20 border border-emerald-500/30 rounded-xl"
                               whileHover={{ scale: 1.05 }}
                             >
-                              <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
                               <span className="text-emerald-300 font-semibold text-sm">8As, 1B</span>
                             </motion.div>
                           </div>
@@ -490,7 +489,6 @@ const AboutSection = () => {
                                   <div className="flex-1">
                                     <div className="text-slate-400 text-xs md:text-sm font-medium mb-1">{item.label}</div>
                                     <div className="flex items-center gap-2">
-                                      <div className={`w-2 h-2 bg-${item.color}-400 rounded-full`}></div>
                                       <span className="text-white font-semibold text-sm md:text-base">{item.value}</span>
                                     </div>
                                   </div>
