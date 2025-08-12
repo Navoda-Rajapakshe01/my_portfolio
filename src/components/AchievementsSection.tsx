@@ -5,6 +5,18 @@ import React from "react";
 import { TbTrophy, TbUsers, TbCode, TbBrain, TbCalendar } from "react-icons/tb";
 
 const AchievementsSection = () => {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const achievements = [
     {
@@ -46,32 +58,32 @@ const AchievementsSection = () => {
   ];
 
   return (
-    <section id="achievements" className="py-20 px-6 lg:px-8 bg-gradient-to-br from-slate-900/50 to-slate-800/30">
+    <section id="achievements" className="py-12 md:py-20 px-4 md:px-6 lg:px-8 bg-gradient-to-br from-slate-900/50 to-slate-800/30">
       <div className="max-w-7xl mx-auto">
         {/* Creative Header */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-20"
           initial={{ opacity: 0, y: -50, scale: 0.9 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6">
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
               My Achievements
             </span>
           </h2>
           
           <motion.div 
-            className="w-32 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto rounded-full"
+            className="w-24 md:w-32 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto rounded-full"
             initial={{ width: 0 }}
-            whileInView={{ width: "8rem" }}
+            whileInView={{ width: isMobile ? "6rem" : "8rem" }}
             transition={{ duration: 1.5, delay: 0.5 }}
             viewport={{ once: true }}
           />
           
           <motion.p 
-            className="text-slate-300 text-lg mt-6 max-w-2xl mx-auto"
+            className="text-slate-300 text-base md:text-lg mt-4 md:mt-6 max-w-2xl mx-auto px-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
@@ -83,30 +95,30 @@ const AchievementsSection = () => {
 
         {/* Achievement Timeline */}
         <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-cyan-500"></div>
+          {/* Timeline Line - Hidden on mobile */}
+          <div className="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-cyan-500"></div>
           
           {/* Achievement Items */}
-          <div className="space-y-12">
+          <div className="space-y-6 md:space-y-12">
             {achievements.map((achievement, index) => {
               const IconComponent = achievement.icon;
               return (
                 <motion.div
                   key={achievement.id}
-                  className="relative flex items-start gap-8 group"
+                  className="relative flex flex-col md:flex-row items-start gap-4 md:gap-8 group"
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.2 }}
                   viewport={{ once: true }}
                 >
                   {/* Timeline Dot */}
-                  <div className="relative z-10 flex-shrink-0">
+                  <div className="relative z-10 flex-shrink-0 self-center md:self-start">
                     <motion.div 
-                      className={`w-16 h-16 rounded-full bg-gradient-to-br ${achievement.color} flex items-center justify-center shadow-lg border-4 border-slate-900/50`}
+                      className={`w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-br ${achievement.color} flex items-center justify-center shadow-lg border-4 border-slate-900/50`}
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <IconComponent className="w-8 h-8 text-white" />
+                      <IconComponent className="w-6 h-6 md:w-8 md:h-8 text-white" />
                     </motion.div>
                     
                     {/* Glowing Effect */}
@@ -126,25 +138,25 @@ const AchievementsSection = () => {
 
                   {/* Achievement Content */}
                   <motion.div 
-                    className="flex-1 bg-slate-900/60 backdrop-blur-sm rounded-xl border border-slate-700/50 p-6 transition-all duration-300 hover:border-slate-600/70 hover:shadow-xl hover:bg-slate-900/80"
-                    whileHover={{ x: 10 }}
+                    className="flex-1 w-full bg-slate-900/60 backdrop-blur-sm rounded-xl border border-slate-700/50 p-4 md:p-6 transition-all duration-300 hover:border-slate-600/70 hover:shadow-xl hover:bg-slate-900/80"
+                    whileHover={{ x: isMobile ? 0 : 10 }}
                   >
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2 md:gap-4">
+                      <div className="flex-1">
+                        <h3 className="text-lg md:text-2xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors leading-tight">
                           {achievement.title}
                         </h3>
-                        <p className="text-slate-400 mb-3">
+                        <p className="text-slate-400 mb-2 md:mb-3 text-sm md:text-base">
                           {achievement.subtitle}
                         </p>
                       </div>
-                      <div className="flex items-center gap-2 text-slate-500 text-sm bg-slate-800/50 px-3 py-1 rounded-full">
-                        <TbCalendar className="w-4 h-4" />
+                      <div className="flex items-center gap-2 text-slate-500 text-xs md:text-sm bg-slate-800/50 px-2 md:px-3 py-1 rounded-full self-start">
+                        <TbCalendar className="w-3 h-3 md:w-4 md:h-4" />
                         {achievement.period}
                       </div>
                     </div>
 
-                    <p className="text-slate-300 leading-relaxed mb-4">
+                    <p className="text-slate-300 leading-relaxed mb-4 text-sm md:text-base">
                       {achievement.description}
                     </p>
 
