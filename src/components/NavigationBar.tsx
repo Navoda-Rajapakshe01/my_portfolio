@@ -70,12 +70,28 @@ const NavigationBar = () => {
   const contactItem = { name: "Contact", href: "#contact" };
 
   const handleNavClick = (href: string) => {
-    setIsMenuOpen(false);
     const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({
+    if (!element) return;
+    // Always close menu first for mobile
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+      // Wait for menu close animation/layout shift
+      setTimeout(() => {
+        const navbar = document.querySelector('header');
+        const navbarHeight = navbar ? navbar.offsetHeight : 0;
+        const elementTop = (element as HTMLElement).getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: elementTop - navbarHeight,
+          behavior: 'smooth',
+        });
+      }, 350); // 350ms for animation
+    } else {
+      const navbar = document.querySelector('header');
+      const navbarHeight = navbar ? navbar.offsetHeight : 0;
+      const elementTop = (element as HTMLElement).getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementTop - navbarHeight,
         behavior: 'smooth',
-        block: 'start',
       });
     }
   };

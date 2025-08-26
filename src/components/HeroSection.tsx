@@ -19,8 +19,8 @@ const HeroSection = () => {
   const handleDownloadCV = () => {
     // Create a link element and trigger download
     const link = document.createElement('a');
-    link.href = '/Navoda Rajapakshe - SE.pdf';
-    link.download = '/Navoda Rajapakshe - SE.pdf';
+    link.href = '/cv.pdf';
+    link.download = '/cv.pdf';
     link.target = '_blank';
     document.body.appendChild(link);
     link.click();
