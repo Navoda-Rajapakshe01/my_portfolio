@@ -464,12 +464,6 @@ const AboutSection = () => {
                                 icon: "📚"
                               },
                               { 
-                                label: "CGPA", 
-                                value: "3.77", 
-                                color: "emerald",
-                                icon: "🎓"
-                              },
-                              { 
                                 label: "Extracurricular", 
                                 value: "University Carrom Team - Member", 
                                 color: "yellow",
